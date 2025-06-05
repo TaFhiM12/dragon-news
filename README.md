@@ -1,6 +1,5 @@
 # Dragon News - A Modern News Portal
 
-![Dragon News Screenshot](https://i.imgur.com/sample-screenshot.png)  
 **Live Demo:** [https://dragon-news-5bd87.web.app/](https://dragon-news-5bd87.web.app/)
 
 ## 📌 Overview
