@@ -80,11 +80,11 @@ dragon-news/
 │   ├── Firebase/         # Firebase configuration
 │   ├── pages/            # Application pages
 │   ├── RootLayout/       # Layout components
+│   ├── router/           # route
 │   ├── App.jsx           # Main application component
 │   └── main.jsx          # Application entry point
 ├── .env                  # Environment variables
 ├── vite.config.js        # Vite configuration
-└── tailwind.config.js    # Tailwind CSS configuration
 ```
 
 ## 🔥 Firebase Setup
