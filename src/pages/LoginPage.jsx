@@ -1,13 +1,19 @@
-import { use } from "react";
-import { FaGithub } from "react-icons/fa";
+import React, { use } from "react";
+import { Link, useLocation, useNavigate } from "react-router";
 import { AuthContext } from "../Contexts/AuthContext";
 import Swal from "sweetalert2";
 
-const SocialLogin = () => {
-  const { signInGoogle } = use(AuthContext);
+const LoginPage = () => {
+  const {signInUser } = use(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const email = form.email.value;
+    const password = form.password.value;
 
-  const handleSignIn = () => {
-    signInGoogle()
+    signInUser(email, password)
       .then((userCredential) => {
         Swal.fire({
           position: "top-end",
@@ -16,8 +22,8 @@ const SocialLogin = () => {
           toast: true,
           showConfirmButton: false,
           timer: 2000,
-          background: "#f0fdf4",
-          iconColor: "#16a34a",
+          background: "#f0fdf4", 
+          iconColor: "#16a34a", 
           color: "#166534",
           customClass: {
             title: "text-lg font-semibold",
@@ -35,6 +41,7 @@ const SocialLogin = () => {
             toast.addEventListener("mouseleave", Swal.resumeTimer);
           },
         });
+        navigate(`${location.state? location.state : '/'}`);
       })
       .catch((error) => {
         let errorMessage;
@@ -82,24 +89,57 @@ const SocialLogin = () => {
         });
       });
   };
-  return (
-    <div>
-      <h1 className="font-semibold mb-5">Login With</h1>
-      <div className="space-y-2">
-        <button
-          onClick={handleSignIn}
-          className="btn btn-outline w-full btn-secondary"
-        >
-          login with Google
-        </button>
 
-        <button className="btn btn-outline w-full">
-          <FaGithub />
-          Login with Github
-        </button>
+  return (
+    <div className="min-h-screen flex items-center justify-center  p-4">
+      <div className="w-full max-w-md bg-white shadow rounded-lg p-8">
+        <h2 className="text-2xl font-semibold text-center mb-6">
+          Login your account
+        </h2>
+        <hr className="mb-6 text-gray-200" />
+
+        <form onSubmit={handleLogin} className="space-y-8">
+          <div>
+            <label className="block text-sm font-medium mb-1">
+              Email address
+            </label>
+            <input
+              type="email"
+              name="email"
+              placeholder="Enter your email address"
+              className="w-full px-4 py-4  bg-gray-100 rounded focus:outline-none"
+              required
+            />
+          </div>
+
+          <div>
+            <label className="block text-sm font-medium mb-1">Password</label>
+            <input
+              type="password"
+              name="password"
+              placeholder="Enter your password"
+              className="w-full px-4 py-4  bg-gray-100 rounded focus:outline-none"
+              required
+            />
+          </div>
+
+          <button
+            type="submit"
+            className="w-full bg-primary text-white py-4 rounded font-medium hover:bg-gray-800 transition"
+          >
+            Login
+          </button>
+        </form>
+
+        <p className="text-center text-sm mt-6">
+          Don’t Have An Account?{" "}
+          <Link to="/auth/register" className="text-red-500 font-medium">
+            Register
+          </Link>
+        </p>
       </div>
     </div>
   );
 };
 
-export default SocialLogin;
+export default LoginPage;
