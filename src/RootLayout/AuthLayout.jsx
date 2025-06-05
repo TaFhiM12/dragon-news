@@ -1,6 +1,7 @@
-import React from "react";
+import React, { Suspense } from "react";
 import Navbar1 from "../Components/Navbar1";
 import { Outlet } from "react-router";
+import LoadingSpinner from "../Components/LoadingSpinner";
 
 const AuthLayout = () => {
   return (
