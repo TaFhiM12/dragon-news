@@ -13,7 +13,6 @@ Dragon News is a modern news portal built with React, Firebase, and Tailwind CSS
 - ⚡ Lightning-fast performance with Vite
 - 🎨 Beautiful UI with Tailwind CSS and DaisyUI
 - 🔄 Real-time data fetching
-- 📱 Fully responsive design
 - 🛡️ Protected routes for authenticated users
 
 ## 🛠️ Technologies Used
@@ -41,7 +40,7 @@ Dragon News is a modern news portal built with React, Firebase, and Tailwind CSS
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/your-username/dragon-news.git
+git clone https://github.com/TaFhiM12/dragon-news.git
 cd dragon-news
 ```
 
